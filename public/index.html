@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Meu Xadrez</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+</head>
+<body>
+<div class="shell">
+  <header>
+    <div>
+      <small>CHESS.COM · AUTOANÁLISE</small>
+      <h1>Meu Xadrez</h1>
+      <p>Descubra os padrões das suas próprias partidas.</p>
+    </div>
+    <b>β</b>
+  </header>
+
+  <section class="panel controls">
+    <label>Usuário<input id="username" placeholder="seu usuário" autocomplete="off"></label>
+    <label>Até o ano<input id="year" type="number"></label>
+    <label>Até o mês<select id="month"></select></label>
+    <label>Período
+      <select id="span">
+        <option value="1">1 mês</option>
+        <option value="3" selected>3 meses</option>
+        <option value="6">6 meses</option>
+        <option value="12">12 meses</option>
+        <option value="24">24 meses</option>
+      </select>
+    </label>
+    <label>Modo
+      <select id="mode">
+        <option value="all">Todos</option>
+        <option value="rapid">Rapid</option>
+        <option value="blitz">Blitz</option>
+        <option value="bullet">Bullet</option>
+        <option value="daily">Daily</option>
+      </select>
+    </label>
+    <label>Cor
+      <select id="color">
+        <option value="all">Ambas</option>
+        <option value="white">Brancas</option>
+        <option value="black">Pretas</option>
+      </select>
+    </label>
+    <button id="load">Analisar</button>
+  </section>
+
+  <div id="status" class="status hidden"></div>
+
+  <nav class="tabs" role="tablist" style="display:flex;gap:8px;margin:12px 0;">
+    <button class="tab-btn active" data-tab="tab-resumo" role="tab" aria-selected="true">Resumo</button>
+    <button class="tab-btn" data-tab="tab-aberturas" role="tab" aria-selected="false">Aberturas</button>
+    <button class="tab-btn" data-tab="tab-partida" role="tab" aria-selected="false">Partida</button>
+  </nav>
+
+<!-- Aba Resumo -->
+    <section id="tab-resumo" class="tab-panel" role="tabpanel">
+      <section class="grid">
+        <article class="panel">
+          <small>RESUMO</small>
+          <div id="period" class="muted"></div>
+          <strong id="total">0</strong><span> partidas</span>
+          <div class="resultbar"><i id="wins"></i><i id="draws"></i><i id="losses"></i></div>
+          <p id="resultText"></p>
+        </article>
+        <article class="panel">
+          <small>POR COR</small>
+          <div id="colorStats" class="twocol"></div>
+          <hr>
+          <small>ONDE AS PARTIDAS TERMINAM</small>
+          <div id="phases"></div>
+        </article>
+      </section>
+
+      <section class="grid">
+        <article class="panel">
+          <small>ATÉ ONDE CHEGUEI</small>
+          <div id="longest"></div>
+        </article>
+        <article class="panel">
+          <small>TIPOS DE FINAL</small>
+          <div id="endgameTypes"></div>
+        </article>
+      </section>
+
+      <section class="grid">
+        <article class="panel">
+          <div class="title"><h2>Modos</h2><small>resultados</small></div>
+          <div id="modes"></div>
+        </article>
+        <article class="panel">
+          <div class="title"><h2>Seus padrões de lance</h2><p>Posições recorrentes e escolhas repetidas.</p></div>
+          <div id="patterns"></div>
+        </article>
+      </section>
+    </section>
+
+    <!-- Aba Aberturas -->
+    <section id="tab-aberturas" class="tab-panel hidden" role="tabpanel">
+      <article class="panel">
+        <div class="title">
+          <h2>Aberturas</h2>
+          <div class="subtabs">
+            <button class="subtab-btn active" data-subtab="mostPlayed">Mais jogadas</button>
+            <button class="subtab-btn" data-subtab="worst">Piores jogos</button>
+            <button class="subtab-btn" data-subtab="best">Melhores jogos</button>
+          </div>
+        </div>
+        <div id="openingsView"></div>
+      </article>
+    </section>
+
+    <!-- Aba Partida -->
+    <section id="tab-partida" class="tab-panel hidden" role="tabpanel">
+      <section class="panel" style="margin-top:14px">
+        <div class="title">
+          <div><h2>Revisão com Stockfish</h2><p>Roda no seu navegador. Prioriza suas derrotas mais recentes.</p></div>
+        </div>
+        <div class="engine-actions">
+          <label class="mini-label" id="analysisCountLabel">Partidas
+            <select id="analysisCount">
+              <option value="5">5</option>
+              <option value="10" selected>10</option>
+              <option value="20">20</option>
+              <option value="40">40</option>
+            </select>
+          </label>
+          <label class="mini-label">Lances seus por partida
+            <select id="analysisMaxPlies">
+              <option value="15">15</option>
+              <option value="25">25</option>
+              <option value="40" selected>40</option>
+              <option value="200">Todos</option>
+            </select>
+          </label>
+          <label class="mini-label">Profundidade
+            <select id="analysisDepth">
+              <option value="9">Rápida</option>
+              <option value="11" selected>Normal</option>
+              <option value="13">Mais precisa</option>
+            </select>
+          </label>
+          <button id="engineBtn">Analisar com Stockfish</button>
+          <button id="stopBtn" class="secondary hidden">Parar</button>
+        </div>
+        <div id="engineStatus"></div>
+        <section id="boardReview" class="board-review hidden">
+          <div class="title"><div><h2>Tabuleiro da partida</h2><p id="boardGameLabel">Selecione uma partida para visualizar.</p></div><span id="boardMoveLabel" class="muted">Início</span></div>
+          <div class="board-layout">
+            <div class="board-main">
+              <div id="chessBoard" class="chess-board-svg" aria-label="Tabuleiro de xadrez"></div>
+              <div id="boardLastMove" class="callout">Posição inicial</div>
+              <div class="board-controls board-controls-big">
+                <button id="boardStart" class="secondary board-nav-btn" title="Início">⏮</button>
+                <button id="boardPrev" class="secondary board-nav-btn" title="Voltar">◀</button>
+                <button id="boardNext" class="board-nav-btn" title="Avançar">▶</button>
+                <button id="boardEnd" class="secondary board-nav-btn" title="Fim">⏭</button>
+              </div>
+              <label class="mini-label">Ir para o lance
+                <input id="boardPly" type="range" min="0" max="0" value="0">
+              </label>
+            </div>
+            <div class="board-side">
+              <div id="moveList" class="move-list"></div>
+            </div>
+          </div>
+        </section>
+        <div id="engineResults"></div>
+      </section>
+    </section>
+  </main>
+
+  <footer>Node.js + API pública do Chess.com + chess.js + Stockfish WASM</footer>
+</div>
+<script type="module">
+import { ChessBoard } from './js/board.js';
+window.ChessBoard = ChessBoard;
+import './app.js';
+</script>
+</body>
+</html>
+  <main id="dashboard" class="hidden">

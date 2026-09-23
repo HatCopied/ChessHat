@@ -1,0 +1,81 @@
+:root{--bg:#0c0e0c;--p:#151815;--p2:#1b1f1a;--line:#2b302b;--text:#edf2ea;--muted:#909990;--a:#9dcc62}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0,#202b18,transparent 35%),var(--bg);color:var(--text);font:14px system-ui,Segoe UI,sans-serif}.shell{max-width:1100px;margin:auto;padding:36px 20px}header{display:flex;justify-content:space-between;margin-bottom:22px}header small,small{color:var(--a);font-weight:800;letter-spacing:1.2px;font-size:10px}h1{font-size:42px;letter-spacing:-2px;margin:4px 0}h2{font-size:18px;margin:0 0 12px}p{color:var(--muted)}header>b{border:1px solid #3c4a30;color:var(--a);padding:9px;border-radius:10px;height:max-content}.panel{background:linear-gradient(145deg,#171a17,#121512);border:1px solid var(--line);border-radius:16px;padding:19px;box-shadow:0 10px 30px #0003}.controls{display:grid;grid-template-columns:2fr 1fr 1.2fr 1.2fr 1.2fr auto;gap:10px;align-items:end}.controls label{color:var(--muted);font-size:11px}.controls input,.controls select{display:block;width:100%;margin-top:6px;background:#0e110e;color:var(--text);border:1px solid var(--line);padding:11px;border-radius:9px;font:inherit}button{background:var(--a);border:0;border-radius:9px;padding:11px 15px;font-weight:800;cursor:pointer}.status{margin:12px 0;padding:11px;border:1px solid #4b4b25;background:#262618;border-radius:9px}.hidden{display:none}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.panel>strong{display:inline-block;font-size:55px;letter-spacing:-3px;margin-top:14px}.twocol{display:grid;grid-template-columns:1fr 1fr;margin:20px 0}.twocol strong{display:block;font-size:32px}.twocol span{color:var(--muted);font-size:12px}.resultbar{height:8px;background:#292d29;border-radius:99px;display:flex;overflow:hidden;margin:20px 0 7px}.resultbar i:nth-child(1){background:#a8d276}.resultbar i:nth-child(2){background:#777}.resultbar i:nth-child(3){background:#b96d6d}.title{display:flex;justify-content:space-between;align-items:start}.title p{font-size:12px;margin:0}.row{padding:12px 0;border-bottom:1px solid var(--line)}.row:last-child{border:0}.rowtop{display:flex;justify-content:space-between}.muted{color:var(--muted);font-size:11px}.mini{height:5px;background:#292d29;border-radius:9px;margin-top:7px;overflow:hidden}.mini i{display:block;height:100%;background:var(--a)}.barrow{display:grid;grid-template-columns:90px 1fr 25px;gap:8px;margin:9px 0;font-size:11px;align-items:center}.bar{height:7px;background:#292d29;border-radius:9px}.bar i{display:block;height:100%;background:var(--a);border-radius:9px}.pattern{padding:13px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px}.moves{color:#c5e59e;margin-top:4px;font-size:12px}.engine-card{margin-top:10px;border:1px solid var(--line);border-radius:9px;padding:12px;color:var(--muted)}footer{text-align:center;color:#606860;padding:25px;font-size:11px}@media(max-width:850px){.controls{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}}@media(max-width:500px){.controls{grid-template-columns:1fr}h1{font-size:34px}}
+.engine-actions{display:flex;gap:8px;align-items:center}.engine-actions select{background:#0e1012;color:var(--text);border:1px solid var(--line);border-radius:9px;padding:9px;font:inherit;font-size:12px}.engine-progress{height:8px;background:#282c30;border-radius:99px;overflow:hidden;margin:12px 0}.engine-progress i{display:block;height:100%;width:0;background:var(--a);transition:width .15s}.engine-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}.engine-stat{border:1px solid var(--line);border-radius:10px;padding:12px}.engine-stat b{display:block;font-size:22px}.engine-stat span{font-size:10px;color:var(--muted)}.engine-table{width:100%;border-collapse:collapse;font-size:12px}.engine-table th,.engine-table td{text-align:left;padding:10px;border-bottom:1px solid var(--line)}.engine-table th{color:var(--muted);font-weight:500}.badge-error{padding:4px 7px;border-radius:7px;background:#28221e}.engine-game{margin-top:18px;font-size:12px;color:var(--muted)}
+.cls-icon{width:18px;height:18px;vertical-align:-4px;margin-right:4px}
+.engine-stat .cls-icon{width:22px;height:22px;display:block;margin:0 auto 4px}
+.movelist-row{display:flex;align-items:center;gap:6px;padding:4px 6px;border-radius:6px;cursor:pointer}
+.movelist-row:hover{background:#1e221e}@media(max-width:600px){.engine-summary{grid-template-columns:1fr 1fr}.engine-table{font-size:11px}.engine-actions{flex-direction:column;align-items:stretch}}
+.controls{grid-template-columns:2fr 1fr 1.2fr 1.2fr 1.2fr 1.2fr auto}
+hr{border:0;border-top:1px solid var(--line);margin:16px 0}
+a{color:var(--a)}
+.bad{color:#d98a8a;font-size:11px;font-weight:700}
+button.secondary{background:#2b302b;color:var(--text)}
+button:disabled{opacity:.5;cursor:default}
+.engine-actions{flex-wrap:wrap;align-items:end;margin-top:6px}
+.mini-label{display:flex;flex-direction:column;gap:5px;font-size:11px;color:var(--muted)}
+.callout{padding:11px 13px;border:1px solid #4b4b25;background:#262618;border-radius:9px;color:var(--text)}
+.engine-stat.accuracy b{color:var(--a);font-size:28px}
+.engine-table{margin-top:12px}
+#longest strong{font-size:44px;letter-spacing:-2px;margin-right:8px}
+#longest span{color:var(--muted)}
+.rowtop span{font-size:12px}
+@media(max-width:850px){.controls{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.controls{grid-template-columns:1fr}}
+
+.game-card{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.game-card:first-child{border-top:0}.game-actions{display:flex;gap:8px;align-items:center;white-space:nowrap}
+.game-actions a{color:var(--a);font-size:12px}.game-actions button{padding:6px 9px;font-size:12px}
+.opening-games h3{font-size:13px;margin:12px 0 4px;color:var(--a)}
+@media(max-width:600px){.game-card{align-items:flex-start;flex-direction:column}.game-actions{width:100%}}
+
+.board-review{margin-top:16px;border-top:1px solid var(--line);padding-top:16px}.board-layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:20px;align-items:start}.sq{position:relative;display:flex;align-items:center;justify-content:center;min-width:0;min-height:0}.sq.l{background:#e6d7b7}.sq.d{background:#78905d}.sq.hl::after{content:"";position:absolute;inset:0;background:rgba(255,221,80,.42);mix-blend-mode:multiply}.pc{position:relative;z-index:1;width:100%;height:100%;background-size:contain;background-position:center;background-repeat:no-repeat;filter:none;pointer-events:none;-webkit-user-drag:none}.coord{position:absolute;z-index:2;font-family:system-ui,Segoe UI,sans-serif;font-weight:800;font-size:11px;line-height:1}.coord.f{right:4px;bottom:2px}.coord.r{left:3px;top:2px}.sq.l .coord{color:#78905d}.sq.d .coord{color:#e6d7b7}.board-main{display:flex;flex-direction:column;gap:10px;min-width:0}.board-side{display:flex;flex-direction:column;gap:12px;min-width:0}.board-controls{display:flex;flex-wrap:wrap;gap:7px}.board-controls button{padding:9px 10px}.board-main input[type=range]{width:100%;margin-top:2px}
+/* Botões de navegação grandes (setas gordas) embaixo do tabuleiro */
+.board-controls-big{justify-content:center;gap:10px;margin-top:2px}
+.board-nav-btn{font-size:24px;line-height:1;padding:16px 26px;border-radius:14px;min-width:64px}
+.board-nav-btn:not(.secondary){background:var(--a)}
+/* Lista de lances ao lado do tabuleiro, com altura pareada e rolagem própria */
+.move-list{max-height:640px;overflow:auto;font-size:13px;border:1px solid var(--line);border-radius:10px;padding:4px}
+@media(max-width:900px){.board-layout{grid-template-columns:1fr}.move-list{max-height:280px}}
+
+/* ===== NOVO TABULEIRO SVG ===== */
+.chess-board-svg{width:100%;max-width:800px;height:auto;aspect-ratio:1;margin:0 auto;border:5px solid #30362c;border-radius:8px;box-shadow:0 10px 25px #0005;background:#1a1d1a;display:block}
+.chess-board-svg svg{display:block;width:100%;height:100%}
+.chess-board-svg .sq.l{fill:transparent}
+.chess-board-svg .sq.d{fill:transparent}
+.chess-board-svg .hl-lastmove{mix-blend-mode:multiply}
+.chess-board-svg .hl-check{fill:rgba(220,60,60,.35)}
+.chess-board-svg .hl-selected{fill:rgba(80,140,255,.35)}
+.chess-board-svg .hl-legal{fill:rgba(80,140,255,.5)}
+.chess-board-svg .piece{filter:url(#piece-shadow);transition:transform 200ms cubic-bezier(.2,.8,.2,1);overflow:visible}
+.chess-board-svg .coord{font-family:system-ui,Segoe UI,sans-serif;font-weight:800;font-size:14px}
+.chess-board-svg .coord.file{fill:#739552}
+.chess-board-svg .coord.rank{fill:#739552}
+.chess-board-svg .coord.file:nth-child(odd){fill:#EBECD0}
+.chess-board-svg .coord.rank:nth-child(odd){fill:#EBECD0}
+
+/* Badge de classificação no lance */
+.move-badge{display:inline-flex;align-items:center;gap:4px;margin-left:6px;font-size:11px}
+.move-badge img{width:16px;height:16px;vertical-align:middle}
+
+/* Responsividade do tabuleiro SVG */
+@media(max-width:720px){
+  .board-layout{grid-template-columns:1fr}
+  .chess-board-svg{max-width:100%}
+  .board-side{width:100%;margin:0 auto}
+}
+
+/* Abas principais (Resumo / Aberturas / Partida) */
+.tabs{display:flex;gap:8px;margin-bottom:16px}
+.tab-btn{background:transparent;color:var(--muted);border:1px solid var(--line);padding:9px 14px;font-weight:700}
+.tab-btn.active{background:var(--a);color:#0c0e0c}
+
+/* Sub-abas dentro de Aberturas (Mais jogadas / Piores / Melhores) */
+.subtabs{display:flex;gap:8px;flex-wrap:wrap}
+.subtab-btn{background:transparent;color:var(--muted);border:1px solid var(--line);padding:11px 18px;font-size:14px;font-weight:700;border-radius:99px}
+.subtab-btn.active{background:var(--a);color:#0c0e0c;border-color:var(--a)}
+.subtab-btn[data-subtab="worst"]{border-color:#b96d6d;color:#e2a3a3}
+.subtab-btn[data-subtab="worst"].active{background:#d9534f;color:#1a0f0f;border-color:#d9534f}
+.subtab-btn[data-subtab="best"]{border-color:#7fdbff;color:#a8ecff}
+.subtab-btn[data-subtab="best"].active{background:#ffe94d;color:#2a2400;border-color:#ffe94d}
+.opening-row{cursor:pointer}
+.opening-row:hover{background:#1e221e}
+.back-btn{padding:7px 12px;font-size:12px;margin-bottom:4px}
